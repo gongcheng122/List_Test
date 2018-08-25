@@ -7,8 +7,10 @@ public class Main {
         int array1[] = {5,7,1};
         int m = array1.length;
 
-        boolean A = array1.getClass().isArray();
-        System.out.print(A);
+        boolean B = array1.getClass().isArray();
+        System.out.print(B);
+
+        Int_Arrary_List A ;
 
     }
 }
