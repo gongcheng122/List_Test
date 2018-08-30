@@ -44,5 +44,11 @@ public class Main {
 
         System.out.println("取数组最小值 = "+A.Find_Min(array1));
 
+        System.out.println("--------------------------------");
+        int[] ary3 = A.Delete_Max_Data(array1);
+        for(int x = 0;x<ary3.length;x++){
+            System.out.println(ary3[x]);
+        }
+
     }
 }
