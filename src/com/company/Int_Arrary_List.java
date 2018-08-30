@@ -102,7 +102,35 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     @Override
     public int[] Delete_Max_Data(int[] ary) {
         int x = Find_Max(ary);
-        return ary;
+        //System.out.println(x);
+        if(x == 0){
+            System.out.print("此数组为空！");
+            return new int[] {};
+        }else{
+            int a;
+            int b = 0;
+            //计算数组中含有多少个最大值
+            for(int y = 0; y<ary.length;y++){
+                if(ary[y] == x){
+                    b++;
+                }
+            }
+            //System.out.println("数组中含有 "+b+" 个最大值 : "+x);
+            //System.out.println("新数组长度为 ： "+(ary.length-b));
+            int max_ary[] = new int[ary.length-b];
+            int c = 0;
+            //将数组中非最大值的数据元素赋予新的数组
+            for(int y = 0; y<ary.length;y++){
+                if(ary[y] != x){
+                    //System.out.println(ary[y]);
+                    max_ary[c] = ary[y];
+                    //System.out.print(max_ary[c]);
+                    //System.out.print(' ');
+                    c++;
+                }
+            }
+            return max_ary;
+        }
     }
 
     @Override
@@ -154,5 +182,19 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     @Override
     public void sort_min_to_max() {
 
+    }
+
+    @Override
+    public void Display_Int_Array(int[] ary) {
+        if(Is_List_Empty(ary)){
+            System.out.println("数组为空！");
+        }else {
+            System.out.println("数组数据元素如下：");
+            for(int x = 0;x<ary.length;x++){
+                System.out.print(ary[x]);
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
     }
 }

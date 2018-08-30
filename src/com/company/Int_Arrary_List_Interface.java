@@ -11,4 +11,6 @@ public interface Int_Arrary_List_Interface {
     int[] Find_min_array(int x);//查询小于x的数据元素
     void sort_max_to_min();//从大到小排序
     void sort_min_to_max();//从小到大排序
+
+    void Display_Int_Array(int[] ary);
 }
