@@ -24,7 +24,7 @@ public abstract class Array_List {
     public void Empty_List(){}
 
     public boolean Insert_Data(int[] arrayA , int x , int y){return false;}
-    public boolean Delete_Data(int[] arrayA , int x , int y){return false;}
+    public int[] Delete_Data(int[] arrayA , int x){return arrayA;}
     public boolean Sort_Max_To_Min(int[] arrayA){return false;}
     public boolean Sort_Min_To_Max(int[] arrayA){return false;}
 }

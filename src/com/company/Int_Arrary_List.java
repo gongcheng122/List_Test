@@ -69,8 +69,30 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     }
 
     @Override
-    public boolean Delete_Data(int[] arrayA, int x, int y) {
-        return super.Delete_Data(arrayA, x, y);
+    public int[] Delete_Data(int[] ary, int x) {
+        int m = ary.length;
+        if(Is_List_Empty(ary)){
+            return new int[] {};
+        }
+        if((x-1>m)&x<0){
+            return ary;
+        }
+        int a;
+        int b = 0;
+        int max_ary[] = new int[m-1];
+        int c = 0;
+        //将数组中非最大值的数据元素赋予新的数组
+        for(int y = 0; y<m;y++){
+            if(ary[y] != x){
+                //System.out.println(ary[y]);
+                max_ary[c] = ary[y];
+                //System.out.print(max_ary[c]);
+                //System.out.print(' ');
+                c++;
+            }
+        }
+        return max_ary;
+        return ary;
     }
 
     @Override
