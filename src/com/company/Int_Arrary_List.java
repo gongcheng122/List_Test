@@ -53,19 +53,146 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
     }
 
-    //将数组中重复的数据元素重新组成一个新的数组
-    @Override
+   /* @Override
     public int[] Find_Duplication(int[] ary) {
-        int x = 0;
-        int y = ary.length;
-        int duplication[];
-        return ary;
+        int[] Del_Dup_Array = Delete_Duplication(ary);
+        Display_Int_Array(Del_Dup_Array);
+        int m = Del_Dup_Array.length;
+        int n = ary.length;
+        int newLength = n-m;
+        int[] Dup_array = new int[newLength];
+        Display_Int_Array(Dup_array);
+        int i = 0;
+        for(int x = 0;x<newLength-1;x++){
+            for(int y =0;y<n-1;y++){
+                //判断数组ary中是否含有Del_Dup_Array[x]
+                if(Exist_X(ary,Del_Dup_Array[x])){
+                    Dup_array[i] = ary[y];
+                    i++;
+                }
+            }
+        }
+        return Dup_array;
+    }
+*/
+   //========================================================================================
+    //将数组中重复的数据元素重新组成一个新的数组
+
+    public int[] Find_Duplication(int[] ary) {
+
+        int ary_length = ary.length;
+        //算出一个和ary等长的而且包含ary中重复元素的新数组
+        int dup1[] = new int[ary_length];
+        int y = 0;
+        for(int x = 0;x<ary_length;x++) {
+            if(How_Many_X(ary,ary[x])>1&Exist_X_Before_Y(dup1,ary[x],y)){
+                System.out.println(ary[x]);
+                dup1[y] = ary[x];
+                y++;
+            }
+            for (int y = x + 1; y < ary_length; y++) {
+                if (ary[x] == ary[y]) {
+                    //如果duplication数组中不含有已经添加过的重复值，则赋予新的重复值
+                    //System.out.println(!Exist_X_Before_Y(dup1,ary[y],x));
+                    //if(!Exist_X_Before_Y(dup1,ary[y],x)){
+                        dup1[x] = ary[y];
+                        System.out.println(dup1[x]);
+                    //}
+                }
+            }
+        }
+        System.out.println("dup1 = ");
+        Display_Int_Array(dup1);
+
+        //算出重复数组的长度
+        int[] Del_Dup_Array = Delete_Duplication(ary);
+        Display_Int_Array(Del_Dup_Array);
+        int m = Del_Dup_Array.length;
+        int n = ary.length;
+        int newLength = n-m;
+        System.out.println(newLength);
+
+        //给重复数组赋值
+        int[] Dup_array = new int[newLength];
+        for(int x = 0;x<newLength;x++){
+            Dup_array[x] =dup1[x];
+        }
+        return Dup_array;
     }
 
-    //删除数组中重复的数据元素（保留重复数据元素中的一个）
-    @Override
-    public void Delete_Duplication() {
-        super.Delete_Duplication();
+    //=========================================================================================
+
+    //需要传入一个Object数组，然后返回去重后的数组
+    public  int[] Delete_Duplication(int[] arr){
+        //用来记录去除重复之后的数组长度和给临时数组作为下标索引
+        int t = 0;
+        //临时数组
+        int[] tempArr = new int[arr.length];
+        //遍历原数组
+        for(int i = 0; i < arr.length; i++){
+            //声明一个标记，并每次重置
+            boolean isTrue = true;
+            //内层循环将原数组的元素逐个对比
+            for(int j=i+1;j<arr.length;j++){
+                //如果发现有重复元素，改变标记状态并结束当次内层循环
+                if(arr[i]==arr[j]){
+                    isTrue = false;
+                    break;
+                }
+            }
+            //判断标记是否被改变，如果没被改变就是没有重复元素
+            if(isTrue){
+                //没有元素就将原数组的元素赋给临时数组
+                tempArr[t] = arr[i];
+                //走到这里证明当前元素没有重复，那么记录自增
+                t++;
+            }
+        }
+        //Display_Int_Array(tempArr);
+        //声明需要返回的数组，这个才是去重后的数组
+        int[]  newArr = new int[t];
+        //用arraycopy方法将刚才去重的数组拷贝到新数组并返回
+        System.arraycopy(tempArr,0,newArr,0,t);
+        return newArr;
+    }
+
+    //判断数组在第y个元素之前（包含第y个数据元素）是否含有等于
+    public boolean Exist_X_Before_Y(int[] ary,int x,int y){
+        if(y == 0){
+            return false;
+        }
+        if(!Is_List_Empty(ary)){
+            for(int m =0;m<y;m++){
+                if(ary[m] == x){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //数组中是否含有等于x的数据元素
+    public boolean Exist_X(int[] ary,int x){
+        boolean f = false;
+        if(!Is_List_Empty(ary)){
+            for(int y = 0;y<ary.length;y++){
+                if(ary[y] == x){
+                    f = true;
+                }
+            }
+        }
+        return f;
+    }
+
+    //数组中含有等于x的数据元素有多少个
+    public int How_Many_X(int[] ary,int x){
+        int count = 0;
+        for(int y = 0;y<ary.length;y++){
+            if(ary[y] == x){
+                count++;
+            }
+        }
+        return count;
     }
 
     //清空数组
@@ -99,6 +226,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     }
 
     //删去数组中等于x的数据元素
+    @Override
     public int[] Delete_The_X(int[] ary,int x){
         int a;
         int b = 0;
@@ -273,6 +401,5 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
         System.out.println();
     }
-
 
 }

@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        int array1[] = {5,7,3,1,99,17,88,56,77,77,17,2,2277,27,-1};
+        int array1[] = {5,7,3,27,-1,1,99,17,88,56,77,77,17,2,2277,27,-1};
 
         int m = array1.length;
 
@@ -31,7 +31,7 @@ public class Main {
         A.Display_Int_Array(A.Delete_Max_Data(array1));
 
         System.out.println("--------------------------------");
-        int[] array2 = {1,9,9,9,9,9,1,2};
+        int[] array2 = {1,9,9,9,9,0,0,-1,-1,9,1,2,0,0};
         A.Display_Int_Array(array2);
         System.out.println("删除最大值："+A.Find_Max(array2));
         A.Display_Int_Array(A.Delete_Max_Data(array2));
@@ -53,6 +53,25 @@ public class Main {
         A.Display_Int_Array(A.Delete_If_Max_Data(array1,50));
         System.out.println("查找数组中大于50的数组元素");
         A.Display_Int_Array(A.delete_if_min_data(array1,50));
+
+        System.out.println("--------------------------------");
+        System.out.println("--------------------------------");
+        A.Display_Int_Array(array1);
+        A.Display_Int_Array(A.Find_Duplication(array1));
+        //A.Display_Int_Array(A.Find_Duplication(array2));
+
+        /*System.out.println("--------------------------------");
+        System.out.println("--------------------------------");
+
+        System.out.println("--------------------------------");
+        A.Display_Int_Array(array1);
+        System.out.println("删除数组中重复的数据元素：");
+        A.Display_Int_Array(A.Delete_Duplication(array1));
+
+        System.out.println("--------------------------------");
+        A.Display_Int_Array(array2);
+        System.out.println("删除数组中重复的数据元素：");
+        A.Display_Int_Array(A.Delete_Duplication(array2));
 
         System.out.println("--------------------------------");
         A.Display_Int_Array(array1);
@@ -86,5 +105,14 @@ public class Main {
         System.out.println("--------------------------------");
         System.out.println("取数组最大值 = "+A.Find_Max(array1));
         System.out.println("取数组最小值 = "+A.Find_Min(array1));
+
+        System.out.println("--------------------------------");
+        A.Display_Int_Array(array2);
+        System.out.print("在第7个数据元素之前是有存在数据元素-1？");
+        System.out.println(A.Exist_X_Before_Y(array2,-1,7));
+        System.out.print("在第8个数据元素之前是有存在数据元素-1？");
+        System.out.println(A.Exist_X_Before_Y(array2,-1,8));
+        System.out.print("在第9个数据元素之前是有存在数据元素-1？");
+        System.out.println(A.Exist_X_Before_Y(array2,-1,9));*/
     }
 }
