@@ -53,31 +53,8 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
     }
 
-   /* @Override
-    public int[] Find_Duplication(int[] ary) {
-        int[] Del_Dup_Array = Delete_Duplication(ary);
-        Display_Int_Array(Del_Dup_Array);
-        int m = Del_Dup_Array.length;
-        int n = ary.length;
-        int newLength = n-m;
-        int[] Dup_array = new int[newLength];
-        Display_Int_Array(Dup_array);
-        int i = 0;
-        for(int x = 0;x<newLength-1;x++){
-            for(int y =0;y<n-1;y++){
-                //判断数组ary中是否含有Del_Dup_Array[x]
-                if(Exist_X(ary,Del_Dup_Array[x])){
-                    Dup_array[i] = ary[y];
-                    i++;
-                }
-            }
-        }
-        return Dup_array;
-    }
-*/
-   //========================================================================================
     //将数组中重复的数据元素重新组成一个新的数组
-
+    @Override
     public int[] Find_Duplication(int[] ary) {
 
         int ary_length = ary.length;
@@ -85,32 +62,25 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         int dup1[] = new int[ary_length];
         int y = 0;
         for(int x = 0;x<ary_length;x++) {
-            if(How_Many_X(ary,ary[x])>1&Exist_X_Before_Y(dup1,ary[x],y)){
-                System.out.println(ary[x]);
+            //如果数组ary中的ary[x]的个数大于1 且 数组dup中不含有ary[x] ，则将数据元素ary[x]赋予记录重复数据元素的数组dup1中
+            //下面的for循环，如果ary[x] == 0，则!Exist_X(dup1,ary[x]始终为false，不会执行
+            if(How_Many_X(ary,ary[x])>1 & !Exist_X(dup1,ary[x])){
+                //System.out.println(ary[x]);
                 dup1[y] = ary[x];
                 y++;
             }
-            for (int y = x + 1; y < ary_length; y++) {
-                if (ary[x] == ary[y]) {
-                    //如果duplication数组中不含有已经添加过的重复值，则赋予新的重复值
-                    //System.out.println(!Exist_X_Before_Y(dup1,ary[y],x));
-                    //if(!Exist_X_Before_Y(dup1,ary[y],x)){
-                        dup1[x] = ary[y];
-                        System.out.println(dup1[x]);
-                    //}
-                }
-            }
         }
-        System.out.println("dup1 = ");
-        Display_Int_Array(dup1);
+
+//        System.out.println("y = "+y);
+//        System.out.print("dup1 = ");
+//        Display_Int_Array(dup1);
 
         //算出重复数组的长度
-        int[] Del_Dup_Array = Delete_Duplication(ary);
-        Display_Int_Array(Del_Dup_Array);
-        int m = Del_Dup_Array.length;
-        int n = ary.length;
-        int newLength = n-m;
-        System.out.println(newLength);
+        if(How_Many_X(ary,0)>1){
+            y = y+1;
+        }
+        int newLength = y;
+//        System.out.println(newLength);
 
         //给重复数组赋值
         int[] Dup_array = new int[newLength];
@@ -120,9 +90,8 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         return Dup_array;
     }
 
-    //=========================================================================================
-
     //需要传入一个Object数组，然后返回去重后的数组
+    @Override
     public  int[] Delete_Duplication(int[] arr){
         //用来记录去除重复之后的数组长度和给临时数组作为下标索引
         int t = 0;
@@ -157,6 +126,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     }
 
     //判断数组在第y个元素之前（包含第y个数据元素）是否含有等于
+    @Override
     public boolean Exist_X_Before_Y(int[] ary,int x,int y){
         if(y == 0){
             return false;
@@ -172,6 +142,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     }
 
     //数组中是否含有等于x的数据元素
+    @Override
     public boolean Exist_X(int[] ary,int x){
         boolean f = false;
         if(!Is_List_Empty(ary)){
@@ -185,6 +156,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     }
 
     //数组中含有等于x的数据元素有多少个
+    @Override
     public int How_Many_X(int[] ary,int x){
         int count = 0;
         for(int y = 0;y<ary.length;y++){
@@ -309,7 +281,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
 
     //求数组中大于x的数据元素有多少个
     @Override
-    public int How_Many_Max_Data(int[] ary, int x) {
+    public int How_Many_Max_X(int[] ary, int x) {
         int length = ary.length;
         //System.out.println(x);
         if (length == 0) {
@@ -327,10 +299,29 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
     }
 
+    @Override
+    public int How_Many_Min_X(int[] ary, int x) {
+        int length = ary.length;
+        //System.out.println(x);
+        if (length == 0) {
+            System.out.print("此数组为空！WWW");
+            return 0;
+        } else {
+            int a = 0;
+            //计算数组中含有多少个大于x的数据元素
+            for (int y = 0; y < length; y++) {
+                if (ary[y] < x) {
+                    a++;
+                }
+            }
+            return a;
+        }
+    }
+
     //找出数组中大于x的数据元素
     @Override
-    public int[] delete_if_min_data(int[] ary ,int x) {
-        int m = How_Many_Max_Data(ary,x);
+    public int[] Delete_If_Min_X(int[] ary ,int x) {
+        int m = How_Many_Max_X(ary,x);
         int[] new_ary = new int[m];
         int c=0;
         for(int y = 0;y<ary.length;y++){
@@ -344,8 +335,8 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
 
     //删除数组中大于x的数据元素
     @Override
-    public int[] Delete_If_Max_Data(int[] ary, int x) {
-        int m = How_Many_Max_Data(ary,x);
+    public int[] Delete_If_Max_X(int[] ary, int x) {
+        int m = How_Many_Max_X(ary,x);
         int new_length = ary.length-m;
         int[] new_ary = new int[new_length];
         int c=0;
@@ -375,6 +366,16 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
     }
 
+    @Override
+    public int[] Find_If_Min_X(int[] ary, int x) {
+        return Delete_If_Max_X(ary,x);
+    }
+
+    @Override
+    public int[] Find_If_Max_X(int[] ary, int x) {
+        return Delete_If_Min_X(ary,x);
+    }
+
     //数组中的数据元素从大到小排序
     @Override
     public int[] sort_max_to_min(int[] ary) {
@@ -393,7 +394,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         if (Is_List_Empty(ary)) {
             System.out.println("数组为空！");
         } else {
-            System.out.println("数组数据元素如下：");
+            //System.out.println("数组数据元素如下：");
             for (int x = 0; x < ary.length; x++) {
                 System.out.print(ary[x]);
                 System.out.print(" ");
@@ -402,4 +403,19 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         System.out.println();
     }
 
+    public void Display_Int_Array(int[] ary,String str) {
+        Display_Int_Array(ary);
+        System.out.print(str);
+    }
+
+    public void Display_Int_Array(String str, int[] ary) {
+        //System.out.print("debug");
+        System.out.print(str);
+        Display_Int_Array(ary);
+    }
+
+    public void Display_Int_Array(String str1, int[] ary, String str2) {
+        System.out.print(str1);
+        Display_Int_Array(ary,str2);
+    }
 }

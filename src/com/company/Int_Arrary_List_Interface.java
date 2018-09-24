@@ -8,13 +8,16 @@ public interface Int_Arrary_List_Interface {
     int[] Delete_Max_Data(int[] ary);
 
     //求数组中大于x的数据元素有多少个
-    int How_Many_Max_Data(int[] ary,int x);
+    int How_Many_Max_X(int[] ary,int x);
+
+    //求数组中小于x的数据元素有多少个
+    int How_Many_Min_X(int[] ary,int x);
 
     //删除大于x的数据元素
-    int[] Delete_If_Max_Data(int[] ary , int x);
+    int[] Delete_If_Max_X(int[] ary , int x);
 
     //删除数组中小于x的数据元素
-    int[] delete_if_min_data(int[] ary,int x);
+    int[] Delete_If_Min_X(int[] ary,int x);
 
     //查询最小的数据元素
     int Find_Min(int[] ary);
@@ -22,9 +25,11 @@ public interface Int_Arrary_List_Interface {
     //删除最小的数据元素
     int[] Delete_Min_Data(int[] ary);
 
-    //void delete_if_min_data(int x);//删除小于x的数据元素
+    //查找数组ary中小于x的数据元素
+    int[] Find_If_Min_X(int[] ary, int x);
 
-    //int[] Find_min_array(int x);//查询小于x的数据元素
+    //查找数组ary中小于x的数据元素
+    int[] Find_If_Max_X(int[] ary, int x);
 
     //从大到小排序
     int[] sort_max_to_min(int[] ary);
