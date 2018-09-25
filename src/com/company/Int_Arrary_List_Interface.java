@@ -32,10 +32,10 @@ public interface Int_Arrary_List_Interface {
     int[] Find_If_Max_X(int[] ary, int x);
 
     //从大到小排序
-    int[] sort_max_to_min(int[] ary);
+    int[] Sort_Max_To_Min(int[] ary);
 
     //从小到大排序
-    int[] sort_min_to_max(int[] ary);
+    int[] Sort_Min_To_Max(int[] ary);
 
     //显示数组元素
     void Display_Int_Array(int[] ary);

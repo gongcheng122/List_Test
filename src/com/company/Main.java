@@ -113,5 +113,14 @@ public class Main {
         System.out.println(A.Exist_X_Before_Y(array2,-1,8));
         System.out.print("在第9个数据元素之前是有存在数据元素-1？");
         System.out.println(A.Exist_X_Before_Y(array2,-1,9));
+
+        System.out.println("--------------------------------");
+        int array3[] = {5,7,3,77,27,0,-1,1,99,77,0,17,88,56,77,77,17,2,2277,27,-1,0,0,1};
+        A.Display_Int_Array("数组 array3 = ",array3);
+        A.Display_Int_Array("sort 数组 array3 后 = ",A.Sort_Max_To_Min(array3));
+
+        int[] array4 = {1,9,9,9,9,0,0,-1,-1,9,1,2,0,0};
+        A.Display_Int_Array("数组 array4 = ",array4,"\r");
+        A.Display_Int_Array("sort 数组 array4 后 = ",A.Sort_Max_To_Min(array4));
     }
 }

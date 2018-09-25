@@ -1,4 +1,7 @@
 package com.company;
+import java.util.Arrays;
+
+import static java.util.Arrays.sort;
 
 public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Interface {
 
@@ -71,16 +74,11 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
             }
         }
 
-//        System.out.println("y = "+y);
-//        System.out.print("dup1 = ");
-//        Display_Int_Array(dup1);
-
         //算出重复数组的长度
         if(How_Many_X(ary,0)>1){
             y = y+1;
         }
         int newLength = y;
-//        System.out.println(newLength);
 
         //给重复数组赋值
         int[] Dup_array = new int[newLength];
@@ -200,7 +198,7 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     //删去数组中等于x的数据元素
     @Override
     public int[] Delete_The_X(int[] ary,int x){
-        int a;
+        //int a;
         int b = 0;
         //计算数组中含有多少个X
         for (int y = 0; y < ary.length; y++) {
@@ -224,18 +222,6 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
         }
         return max_ary;
     }
-
-    /*//数组中的数据元素从大到小排序
-    @Override
-    public boolean Sort_Max_To_Min(int[] arrayA) {
-        return super.Sort_Max_To_Min(arrayA);
-    }
-
-    //数组中的数据元素从小到大排序
-    @Override
-    public boolean Sort_Min_To_Max(int[] arrayA) {
-        return super.Sort_Min_To_Max(arrayA);
-    }*/
 
     //取数组中的最大值
     @Override
@@ -378,13 +364,22 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
 
     //数组中的数据元素从大到小排序
     @Override
-    public int[] sort_max_to_min(int[] ary) {
-        return new int[] {};
+    public int[] Sort_Max_To_Min(int[] ary) {
+        //Method 1
+        /*
+        final int L = ary.length;
+        sort(ary,0,L);
+        return ary;
+        */
+        //Method2
+        final int L = ary.length;
+        sort(ary,0,L);
+        return ary;
     }
 
     //数组中的数据元素从小到大排序
     @Override
-    public int[] sort_min_to_max(int[] ary) {
+    public int[] Sort_Min_To_Max(int[] ary) {
         return new int[] {};
     }
 
