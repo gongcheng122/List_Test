@@ -367,13 +367,11 @@ public class Int_Arrary_List extends Array_List implements Int_Arrary_List_Inter
     public int[] Sort_Max_To_Min(int[] ary) {
         //Method 1
         /*
-        final int L = ary.length;
-        sort(ary,0,L);
+        sort(ary);
         return ary;
         */
         //Method2
-        final int L = ary.length;
-        sort(ary,0,L);
+        sort(ary);
         return ary;
     }
 
